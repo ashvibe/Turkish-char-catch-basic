@@ -1,0 +1,11 @@
+DATA: lv_text  TYPE string VALUE 'CUST_CODE',
+      lv_regex TYPE string VALUE '[ĞÜŞİÖÇğüşıöç ]', "Turkish and Space for type char
+      lv_pos   TYPE sy-fdpos.
+
+FIND FIRST OCCURRENCE OF REGEX lv_regex IN lv_text MATCH OFFSET lv_pos. "Regex better support for type string
+
+IF sy-subrc = 0.
+  WRITE: 'First Turkish character found, position:', lv_pos.
+ELSE.
+  WRITE: 'No Turkish characters found!'.
+ENDIF.
